@@ -1,26 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
-import Todos from './todos.js';
-import Todopost from './todopost.js';
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
-import Tododel from './tododelete.js';
+import Header from './Component/Header.js';
+import Login from './Component/Login.js';
+import Register from './Component/Register.js';
+import Getlist from './Component/Getlist.js';
+import Postlist from './Component/Postlist.js';
+import Deletelist from './Component/Deletelist.js';
+import Updatelist from './Component/Updatelist.js';
+//import Pagination from './Component/Pagination.js';
+const Home = () => (
+  <div>
+     <ul></ul>
+  </div>
+);
 
-class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
+      <Router>
       <div>
-       <Router>
-       <div>
-       <Route path="/todopost" component={Todopost} />
-       <div className="todopost"><Link to = "/todopost">Add</Link></div><br/>
-       <Route path="/tododelete" component={Tododel} />
-       <div className="todopost"><Link to = "/tododelete">Delete</Link></div>
-       </div>
-       </Router>
-       <Todos />
+      <Header />
+      <Route exact path="/" component={Home} />
+      <Route path = "/Login" component={Login} />
+      <Route path = "/Register" component={Register} />
+      <Route path = "/Getlist" component={Getlist} />
+      <Route path = "/Postlist" component={Postlist} />
+      <Route path = "/Deletelist" component={Deletelist} />
+      <Route path = "/Updatelist" component={Updatelist} />
       </div>
+      </Router>
     );
   }
 }
-
-export default App;
